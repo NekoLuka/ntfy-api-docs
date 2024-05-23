@@ -107,3 +107,90 @@ This will also return a 200 even if the user is no longer has an ACL for that to
 ```
 
 ---
+
+## User endpoints
+These endpoints are accessible for all authenticated users.
+
+---
+
+### GET /account
+Get's all account data for the user.
+If no authentication data is given, it fetches the data for the anonymous user.
+#### Request body
+```json
+```
+#### Response body (200 OK)
+```json
+{
+	"username": "string",
+	"role": "string",
+	"sync_topic": "string",
+	"tokens": [],
+	"limits": {},
+	"stats": {}
+}
+```
+
+### POST /account
+This endpoint is not documented since it's used for signing up, which is not possible on selfhosted instances.
+
+### DELETE /account
+Delete the users account, requires the current password.
+The user appears to be deleted, however, when using the /users endpoint, it still shows up. 
+This could be a bug, further investigation required.
+#### Request body
+```json
+{
+	"password": "string"
+}
+```
+#### Response body (200 OK)
+```json
+{
+  "success": "bool"
+}
+```
+
+---
+
+### POST /account/token
+Creates an access token for the given user.
+#### Request body
+```json
+```
+#### Response body (200 OK)
+```json
+{
+	"token": "string",
+	"last_access": "number",
+	"last_origin": "string",
+	"expires": "number"
+}
+```
+
+### PATCH /account/token
+This endpoint is not documented since it's not yet been investigated.
+
+### DELETE /account/token
+This endpoint is not documented since it's not yet been investigated.
+
+---
+
+### POST /account/password
+Change the users password, requires the current password.
+#### Request body
+```json
+{
+	"password": "string",
+	"new_password": "string"
+}
+```
+#### Response body (200 OK)
+```json
+{
+  "success": "bool"
+}
+```
+
+---
+
