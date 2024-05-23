@@ -15,8 +15,10 @@ This is because it makes the document easier to read.
 ## Admin endpoints
 These endpoints are only accessible for users with the admin role.
 
+---
+
 ### GET /users
-Gets all users including their permissions.
+Gets all users including their ACL's.
 #### Request body
 ```json
 ```
@@ -67,3 +69,41 @@ Deletes the given user.
   "success": "bool"
 }
 ```
+
+---
+
+### PUT | POST /users/access
+Creates/updates ACL's for the given user.
+#### Request body
+```json
+{
+  "username": "string",
+  "topic": "string",
+  "permission": "string"
+}
+```
+#### Response body (200 OK)
+```json
+{
+  "success": "bool"
+}
+```
+
+### DELETE /users/access
+Deletes the given ACL for the given topic from the user.
+This will also return a 200 even if the user is no longer has an ACL for that topic.
+#### Request body
+```json
+{
+  "username": "string",
+  "topic": "string"
+}
+```
+#### Response body (200 OK)
+```json
+{
+  "success": "bool"
+}
+```
+
+---
