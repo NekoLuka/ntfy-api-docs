@@ -1,3 +1,6 @@
+# Notice: This project has been migrated to Codeberg
+[Link to new repository](https://codeberg.org/nekoluka/ntfy-api-docs)
+
 # ntfy api docs
 A simple document with documentation of the ntfy api
 
